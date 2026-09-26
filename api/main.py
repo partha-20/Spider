@@ -95,6 +95,8 @@ def analyze(req: AnalyzeRequest):
 def health():
     return {"status": "ok"}
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WEB_DIR = os.path.join(BASE_DIR, "web")
 @app.get("/")
 def home():
     return FileResponse("web/index.html")
