@@ -4,6 +4,7 @@ import hashlib
 import joblib
 import numpy as np
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles  # ADD THIS IMPORT
 from pydantic import BaseModel, Field
@@ -94,5 +95,7 @@ def analyze(req: AnalyzeRequest):
 def health():
     return {"status": "ok"}
 
-
+@app.get("/")
+def home():
+    return FileResponse("web/index.html")
 app.mount("/", StaticFiles(directory="web", html=True), name="static")
