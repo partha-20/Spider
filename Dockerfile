@@ -6,4 +6,4 @@ COPY api/ ./api/
 COPY models/ ./models/
 COPY web/ ./web/
 ENV PORT=8000
-CMD ["sh", "-c", "uvicorn api.main:app --host 0.0.0.0 --port ${PORT}"]
+CMD ["sh", "-c", "python -m uvicorn api.main:app --host 0.0.0.0 --port ${PORT}"]
